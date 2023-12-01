@@ -6,12 +6,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.app.modules.candidate.CandidateEntity;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/candidate")
 public class CandidateController {
 
   @PostMapping("/")
-  public void created(CandidateEntity candidateEntity){
+  public void created(@Valid CandidateEntity candidateEntity){
     System.out.println("Candidato");
-    System.out.println(candidateEntity.getEmail());  }
+    System.out.println(candidateEntity.getEmail());  
+  }
 }
