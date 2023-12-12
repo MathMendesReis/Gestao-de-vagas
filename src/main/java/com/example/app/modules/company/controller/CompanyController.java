@@ -1,4 +1,4 @@
-package com.example.app.modules.candidate.controllers;
+package com.example.app.modules.company.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,24 +8,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.app.modules.candidate.CandidateEntity;
-import com.example.app.modules.candidate.useCases.CreatedCandidateUseCase;
+import com.example.app.modules.company.entity.CompanyEntity;
+import com.example.app.modules.company.useCases.CreatedCompanyUseCase;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/candidate")
-public class CandidateController {
-
+@RequestMapping("/company")
+public class CompanyController {
   @Autowired
-  private CreatedCandidateUseCase createdCandidateUseCase;
+  private CreatedCompanyUseCase createdCompanyUseCase;
   @PostMapping("/")
-  public @Valid ResponseEntity<Object> created(@RequestBody  @Valid CandidateEntity candidateEntity){
+  public @Valid ResponseEntity<Object> created(@RequestBody @Valid CompanyEntity companyEntity){
     try {
-      var result = this.createdCandidateUseCase.execute(candidateEntity);
+      var result = this.createdCompanyUseCase.execute(companyEntity);
       return ResponseEntity.ok().body(result);
     } catch (Exception e) {
       return ResponseEntity.badRequest().body(e.getMessage());
     }
   }
+
+  @GetMapping("/")
+    public String companyPage() {
+        return "company";
+    }
+
 }
