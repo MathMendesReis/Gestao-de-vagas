@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.app.modules.company.JobRepository;
 import com.example.app.modules.company.dto.CreatedJobDTO;
 import com.example.app.modules.company.entity.JobEntity;
 import com.example.app.modules.company.useCases.JobCreatedUseCase;
@@ -23,11 +22,11 @@ public class JobController {
 
   @Autowired
   private JobCreatedUseCase jobCreatedUseCase;
-
  @PostMapping("/")
   public @Valid ResponseEntity<Object> create(@Valid @RequestBody CreatedJobDTO createdJobDTO, HttpServletRequest request){
     try {
       var companyId = request.getAttribute("company_id");
+
       JobEntity jobEntity = JobEntity.builder()
       .benefits(createdJobDTO.getBenefits())
       .companyId(UUID.fromString(companyId.toString()))
