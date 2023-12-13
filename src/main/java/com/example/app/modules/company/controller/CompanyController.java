@@ -28,9 +28,6 @@ public class CompanyController {
     }
   }
 
-  @GetMapping("/")
-    public String companyPage() {
-        return "company";
-    }
+ 
 
 }

@@ -3,6 +3,8 @@ package com.example.app.modules.company.entity;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,24 +14,31 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
-
 @Entity(name = "job")
 @Data
 public class JobEntity {
-  
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID id;
-  @NotBlank
-  private String jobTitle;
-  @NotBlank
-  private String jobDescription;
 
-  @ManyToOne()
-  @JoinColumn(name = "company_id", insertable = false, updatable = false)
-  private CompanyEntity companyEntity;
+   @Id
+   @GeneratedValue(strategy = GenerationType.UUID)
+   private UUID id;
 
-  @Column(name = "company_id")
-  private UUID companyId;
-  private LocalDateTime createdAt;
+   @NotBlank
+   private String description;
+
+   @NotBlank
+   private String benefits;
+
+   @NotBlank
+   private String level;
+
+   @ManyToOne
+   @JoinColumn(name = "company_id", insertable = false, updatable = false)
+   private CompanyEntity companyEntity;
+
+  @Column(name = "company_id", nullable = false)
+   private UUID companyId;
+   
+  @CreationTimestamp
+   private LocalDateTime createdAt;
+
 }

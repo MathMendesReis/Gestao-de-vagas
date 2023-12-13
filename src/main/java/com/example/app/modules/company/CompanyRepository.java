@@ -9,4 +9,5 @@ import com.example.app.modules.company.entity.CompanyEntity;
 
 public interface CompanyRepository extends JpaRepository<CompanyEntity,UUID> {
   Optional<CompanyEntity> findByEmail (String email);
+  Optional<CompanyEntity> findByCompanyName(String username);
 }
