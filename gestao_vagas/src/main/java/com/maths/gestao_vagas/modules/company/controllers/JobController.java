@@ -14,6 +14,7 @@ import com.maths.gestao_vagas.modules.company.models.JobEntity;
 import com.maths.gestao_vagas.modules.company.service.CreateJobUseCase;
 
 import jakarta.servlet.http.HttpServletRequest;
+
 import jakarta.validation.Valid;
 
 @RestController
