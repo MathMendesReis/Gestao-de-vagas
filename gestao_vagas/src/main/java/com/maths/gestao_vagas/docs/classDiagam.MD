@@ -1,5 +1,5 @@
 ```mermaid
-gclassDiagram
+classDiagram
   class CandidateEntity {
     + id: UUID
     + name: String
