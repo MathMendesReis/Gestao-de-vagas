@@ -12,11 +12,18 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 @Configuration
 public class SecurityConfig {
+
+    private final static String[] PERMIT_ALL = {
+        "/candidate/create-account",
+        "/auth",
+        "/company/create-account",
+        "/company/auth"
+    };
     @Bean
      SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
      http.csrf(csrf -> csrf.disable())
      .authorizeHttpRequests(auth -> {
-          auth.requestMatchers("/candidate/create-account","/auth").permitAll();
+          auth.requestMatchers(PERMIT_ALL).permitAll();
           auth.anyRequest().authenticated();
         });
     return http.build();
