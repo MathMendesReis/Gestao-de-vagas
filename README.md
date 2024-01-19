@@ -32,15 +32,11 @@ git clone https://github.com/MathMendesReis/Gestao-de-vagas.git
 
 ```bash
 cd gestao_vagas/
-```
-
-2. Instale as dependências com o Maven:
-
-```bash
 mvn install
+
 ```
 
-3. rode o container docker:
+2. rode o container docker:
 
 ```bash
 docker compose up -d
