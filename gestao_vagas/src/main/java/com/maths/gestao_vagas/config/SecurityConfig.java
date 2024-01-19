@@ -17,7 +17,8 @@ public class SecurityConfig {
         "/candidate/create-account",
         "/auth",
         "/company/create-account",
-        "/company/auth"
+        "/company/auth",
+        "/company/job"
     };
     @Bean
      SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
